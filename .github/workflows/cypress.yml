@@ -1,14 +1,33 @@
 name: Cypress
-on: [push]
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  cypress-run:
+  run_ui_test:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v1
-          with:
-            start: npm start
+      - name: Checkout branch
+        uses: actions/checkout@v2
+
+      - name: Run cypress
+        uses: cypress-io/github-action@v2
+        with:
+          build: yarn build
+          start: yarn serve
+          wait-on: 'http://localhost:3000'
+          browser: chrome
+
+      - name: Save screenshots folder
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: screenshots
+          if-no-files-found: ignore
+          path: cypress/screenshots/**
