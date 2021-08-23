@@ -38,4 +38,4 @@ cypress/screenshots
 cypress/videos
 
 # aws
-awsconfiguration.json
+aws-exports.js
