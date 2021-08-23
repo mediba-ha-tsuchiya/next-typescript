@@ -12,11 +12,6 @@
     "lint:fix": "eslint src --ext .js,jsx,.ts,.tsx --fix",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'"
   },
-  "dependencies": {
-    "next": "11.1.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
-  },
   "devDependencies": {
     "@testing-library/cypress": "^8.0.0",
     "@types/react": "17.0.19",
@@ -34,5 +29,10 @@
     "singleQuote": true,
     "jsxSingleQuote": true,
     "printWidth": 100
+  },
+  "dependencies": {
+    "@apollo/client": "^3.4.8",
+    "graphql": "^15.5.1",
+    "next-apollo-appsync": "^0.0.7"
   }
 }
